@@ -1,0 +1,53 @@
+logging:
+  config: classpath:logback.xml
+  path: /logs
+server:
+  port: 80
+  session-timeout: 60
+  context-path: /E-shop
+
+
+mybatis:
+     mapperLocations: classpath:/main/java/com/shop/dao/*.xml
+     typeAliasesPackage: main.java.com.shop.dao
+     mapperScanPackage: main.java.com.shop.dao
+     configLocation: classpath:/mybatis-config.xml
+
+spring:
+    datasource:
+        name: db
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf-8
+        username: root
+        password:
+        driver-class-name: com.mysql.jdbc.Driver
+        minIdle: 5
+        maxActive: 100
+        initialSize: 10
+        maxWait: 60000
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 50
+        removeAbandoned: true
+        filters: stat # ,wall,log4j # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000 # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+        useGlobalDataSourceStat: true # 合并多个DruidDataSource的监控数据
+        druidLoginName: wjf # 登录druid的账号
+        druidPassword: wjf # 登录druid的密码
+        cachePrepStmts: true  # 开启二级缓存
+    redis:
+        database:  0
+        host:  127.0.0.1
+        port:  6379
+        password: 
+        pool:
+           max-active: 8
+           max-wait: -1
+           max-idle: 8
+           min-idle: 0
+        timeout: 0
